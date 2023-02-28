@@ -1,9 +1,10 @@
 <?php
-
-use App\Http\Controllers\Admin\DashboardController as DashboardController;
-use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Admin\DashboardController as DashboardController;
+use App\Http\Controllers\Admin\PostController as PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,9 @@ Route::get('/', function () {
 
 // Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth','verified'])->name('dashboard');
 
-Route::middleware(['auth','verified'])->name('admin.')->prefix('admin')->namespace('Admin')->group(function(){
+Route::middleware(['auth','verified'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/dashboard',[DashboardController::class, 'index'])->middleware(['auth','verified'])->name('dashboard');
-    Route::resource('posts',[PostController::class])->parameters(['posts' => 'post:slug']);
+    Route::resource('posts',PostController::class)->parameters(['posts' => 'post:slug']);
 });
 
 Route::middleware('auth')->group(function () {
