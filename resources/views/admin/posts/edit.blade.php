@@ -15,8 +15,9 @@
         </div>
         @endif
         <div class="col-12">
-            <form action="{{route('admin.posts.store')}}" method="POST">
+            <form action="{{route('admin.posts.update', $post->slug)}}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="form-group">
                     <label class="control-label">
                         Titolo
@@ -24,7 +25,6 @@
                     <input type="text" class="form-control" placeholder="Titolo" id="title" name="title">
                     @error('title')
                     <div class="text-danger">{{$message}}</div>
-
                     @enderror
                 </div>
                 <div class="form-group">
