@@ -45,6 +45,7 @@ class PostController extends Controller
         $form_data['slug']=$slug;
 
         $newPost = new Post();
+
         $newPost->fill($form_data);
 
         $newPost->save();
@@ -61,7 +62,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('admin.posts.show',compact('post'));
     }
 
     /**
